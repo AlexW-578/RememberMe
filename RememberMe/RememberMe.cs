@@ -15,7 +15,7 @@ namespace RememberMe
         public override string Author => "AlexW-578";
         public override string Version => "0.1.0";
         public override string Link => "https://github.com/AlexW-578/RememberMe/";
-        
+
         private static ModConfiguration Config;
 
         [AutoRegisterConfigKey] private static readonly ModConfigurationKey<bool> Enabled =
@@ -57,7 +57,6 @@ namespace RememberMe
             static void Postfix(SyncRef<TextField> ____username, SyncRef<TextField> ____password,
                 SyncRef<Checkbox> ____rememberLogin, LoginDialog __instance)
             {
-                Warn(__instance.Engine.LocalDB.SecretMachineID);
                 if (Config.GetValue(Enabled))
                 {
                     if (Config.GetValue(JustUsername))
@@ -70,12 +69,19 @@ namespace RememberMe
                         if (!(Config.GetValue(EncryptedPassword) is null))
                         {
                             byte[] data = System.Convert.FromBase64String(Config.GetValue(EncryptedPassword));
+                            Warn("----------------------------");
+                            Warn(Config.GetValue(EncryptedPassword));
+                            byte[] decrypted;
 
-                            byte[] decrypted = ProtectedData.Unprotect(data,
-                                Encoding.Unicode.GetBytes(__instance.Engine.LocalDB.SecretMachineID),
-                                DataProtectionScope.LocalMachine);
-                            
-                            if (!Config.GetValue(UseSecretMachineID))
+                            if (Config.GetValue(UseSecretMachineID))
+                            {
+                                Warn(__instance.Engine.LocalDB.SecretMachineID);
+                                Warn("----------------------------");
+                                decrypted = ProtectedData.Unprotect(data,
+                                    Encoding.Unicode.GetBytes(__instance.Engine.LocalDB.SecretMachineID),
+                                    DataProtectionScope.LocalMachine);
+                            }
+                            else
                             {
                                 decrypted = ProtectedData.Unprotect(data,
                                     Encoding.Unicode.GetBytes(Config.GetValue(EncryptionPassword)),
@@ -83,7 +89,7 @@ namespace RememberMe
                             }
 
                             ____password.Target.TargetString = Encoding.Unicode.GetString(decrypted);
-
+                            Warn(Encoding.Unicode.GetString(decrypted));
                             if (Config.GetValue(AutoLogin))
                             {
                                 ____rememberLogin.Target.IsChecked = true;
@@ -123,16 +129,24 @@ namespace RememberMe
                 {
                     Config.Set(Username, credential);
                     var data = Encoding.Unicode.GetBytes(password);
-                    byte[] encrypted = System.Security.Cryptography.ProtectedData.Protect(data,
-                        Encoding.Unicode.GetBytes(Config.GetValue(EncryptionPassword)),
-                        DataProtectionScope.LocalMachine);
-                    if (!Config.GetValue(UseSecretMachineID))
+                    byte[] encrypted;
+                    if (Config.GetValue(UseSecretMachineID))
+                    {
+                        encrypted = System.Security.Cryptography.ProtectedData.Protect(data,
+                            Encoding.Unicode.GetBytes(__instance.Engine.LocalDB.SecretMachineID),
+                            DataProtectionScope.LocalMachine);
+                        Warn(__instance.Engine.LocalDB.SecretMachineID);
+                    }
+                    else
                     {
                         encrypted = System.Security.Cryptography.ProtectedData.Protect(data,
                             Encoding.Unicode.GetBytes(Config.GetValue(EncryptionPassword)),
                             DataProtectionScope.LocalMachine);
                     }
-
+                    Warn("----------------------------");
+                    Warn(__instance.Engine.LocalDB.SecretMachineID);
+                    Warn(System.Convert.ToBase64String(encrypted));
+                    Warn("----------------------------");
 
                     Config.Set(EncryptedPassword, System.Convert.ToBase64String(encrypted));
                 }
