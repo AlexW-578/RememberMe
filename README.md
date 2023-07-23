@@ -15,4 +15,7 @@ As this mod is dealing with your username and password, I suggest inspecting the
 3. Start the game. If you want to verify that the mod is working you can check your Neos logs.
 
 
+Inspired by the old VRChat mod [RememberMe](https://github.com/loukylor/VRC-Mods/tree/RM-1.0.6#rememberme) by [loukylor](https://github.com/loukylor)
+
 I am not liable for any damages that may occur when using this mod as specified in the licence.
+
