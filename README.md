@@ -1,10 +1,10 @@
 # RememberMe
 
-A [NeosModLoader](https://github.com/neos-modding-group/NeosModLoader) mod for [Neos VR](https://neos.com/) that does remembers usernames and passwords.
+A [NeosModLoader](https://github.com/neos-modding-group/NeosModLoader) mod for [Neos VR](https://neos.com/) that can automatically sign in or auto-fill even after the 7 days by remembering the username and optionally the password..
 
 Passwords are by default encrypted with extra entropy using your secret machine ID, but this can be configured using a custom password. 
 
-**WARNING!**: Passwords are stored as protected data with extra entropy, this does mean that the password is stored on the device though. 
+**WARNING!**: All saved passwords are stored using c# built in 'ProtectedData' using either the secretMachineID or a custom password for added entropy, this does mean that the password is stored on the device though. 
 
 As this mod is dealing with your username and password, I suggest inspecting the code and compile it yourself, though a compiled form is shared. 
 
