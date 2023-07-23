@@ -2,11 +2,11 @@
 
 A [NeosModLoader](https://github.com/neos-modding-group/NeosModLoader) mod for [Neos VR](https://neos.com/) that does remembers usernames and passwords.
 
-Passwords are by defualt encrypted with extra entropy using your secret machine ID, but this can be configured using a custom password. 
+Passwords are by default encrypted with extra entropy using your secret machine ID, but this can be configured using a custom password. 
 
 **WARNING!**: Passwords are stored as protected data with extra entropy, this does mean that the password is stored on the device though. 
 
-As this mod is dealing with your username and password, i suggest inpecting the code and compile it yourself, though a compiled form is shared. 
+As this mod is dealing with your username and password, I suggest inspecting the code and compile it yourself, though a compiled form is shared. 
 
 
 ## Installation
@@ -15,4 +15,4 @@ As this mod is dealing with your username and password, i suggest inpecting the 
 3. Start the game. If you want to verify that the mod is working you can check your Neos logs.
 
 
-I am not liable for any damages that may occour when using this mod as specified in the licence.
+I am not liable for any damages that may occur when using this mod as specified in the licence.
