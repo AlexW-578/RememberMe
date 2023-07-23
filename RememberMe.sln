@@ -1,0 +1,21 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{47EBE89B-088B-4833-AD59-3E87C2A6357A}") = "RememberMe", "RememberMe\RememberMe.csproj", "{47EBE89B-088B-4833-AD59-3E87C2A6357A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47EBE89B-088B-4833-AD59-3E87C2A6357A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EBE89B-088B-4833-AD59-3E87C2A6357A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EBE89B-088B-4833-AD59-3E87C2A6357A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EBE89B-088B-4833-AD59-3E87C2A6357A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47EBE89B-088B-4833-AD59-3E87C2A6357A}
+	EndGlobalSection
+EndGlobal

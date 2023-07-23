@@ -13,7 +13,7 @@ namespace RememberMe
     {
         public override string Name => "RememberMe";
         public override string Author => "AlexW-578";
-        public override string Version => "0.1.0";
+        public override string Version => "0.1.1";
         public override string Link => "https://github.com/AlexW-578/RememberMe/";
 
         private static ModConfiguration Config;
